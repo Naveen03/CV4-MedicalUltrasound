@@ -1,0 +1,10 @@
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\bin\Release\ManagedImageForm.exe.config
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\bin\Release\ManagedImageForm.exe
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\bin\Release\ManagedImageForm.pdb
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\obj\Release\ManagedImageForm.Form1.resources
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\obj\Release\ManagedImageForm.Properties.Resources.resources
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\obj\Release\ManagedImageForm.csproj.GenerateResource.cache
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\obj\Release\ManagedImageForm.csproj.CoreCompileInputs.cache
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\obj\Release\ManagedImageForm.exe
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\obj\Release\ManagedImageForm.pdb
+C:\Users\navee\Documents\projects\USI_processing\ManagedImageForm\ManagedImageForm\obj\Release\ManagedImageForm.csproj.AssemblyReference.cache
