@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CB4361DD-19A1-4FEC-B1C7-8EB08FA6C126}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UTScannerApp</RootNamespace>
+    <AssemblyName>UTScannerApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GraphLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\externalDLL\GraphLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot">
+      <HintPath>..\externalDLL\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.WindowsForms">
+      <HintPath>..\externalDLL\OxyPlot.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\externalDLL\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddGamaCurveDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGamaCurveDialog.Designer.cs">
+      <DependentUpon>AddGamaCurveDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clsConstant.cs" />
+    <Compile Include="frmApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmApplication.Designer.cs">
+      <DependentUpon>frmApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBGammaCurve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBGammaCurve.Designer.cs">
+      <DependentUpon>frmBGammaCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCapture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCapture.Designer.cs">
+      <DependentUpon>frmCapture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatientInfo.Designer.cs">
+      <DependentUpon>frmPatientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSerialPortSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSerialPortSettings.Designer.cs">
+      <DependentUpon>frmSerialPortSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTGC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTGC.Designer.cs">
+      <DependentUpon>frmTGC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUTInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUTInfo.Designer.cs">
+      <DependentUpon>frmUTInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmView.Designer.cs">
+      <DependentUpon>frmView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucExternalView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucExternalView.Designer.cs">
+      <DependentUpon>ucExternalView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucGraph.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucGraph.Designer.cs">
+      <DependentUpon>ucGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucViewer.Designer.cs">
+      <DependentUpon>ucViewer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddGamaCurveDialog.resx">
+      <DependentUpon>AddGamaCurveDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmApplication.resx">
+      <DependentUpon>frmApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBGammaCurve.resx">
+      <DependentUpon>frmBGammaCurve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCapture.resx">
+      <DependentUpon>frmCapture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPatientInfo.resx">
+      <DependentUpon>frmPatientInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSerialPortSettings.resx">
+      <DependentUpon>frmSerialPortSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTGC.resx">
+      <DependentUpon>frmTGC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUTInfo.resx">
+      <DependentUpon>frmUTInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmView.resx">
+      <DependentUpon>frmView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ucExternalView.resx">
+      <DependentUpon>ucExternalView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucGraph.resx">
+      <DependentUpon>ucGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucViewer.resx">
+      <DependentUpon>ucViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\.suo" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\Browse.VC.db" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\Browse.VC.db-shm" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\Browse.VC.db-wal" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\Browse.VC.opendb" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\ipch\a1e327d9f2a44544.ipch" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\ipch\ae2eac4e3d822d01.ipch" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\ipch\d8680aaa6d7467a1.ipch" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\ipch\de5b6d233a86cf8.ipch" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\Solution.VC.db" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\Solution.VC.db-shm" />
+    <None Include="UTScannerApp\.vs\UTScannerApp\v16\Solution.VC.db-wal" />
+    <None Include="UTScannerApp\Debug\GraphLib.dll.config" />
+    <None Include="UTScannerApp\Debug\Input.rar" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame1.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame10.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame2.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame3.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame4.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame5.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame6.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame7.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame8.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient1\frame9.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame1.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame10.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame2.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame3.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame4.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame5.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame6.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame7.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame8.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient2\frame9.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient3\CarotidFlow.csv" />
+    <None Include="UTScannerApp\Debug\Input\Patient3\CarotidHeader.csv" />
+    <None Include="UTScannerApp\Debug\Microsoft.VC90.CRT.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UTImgProcess\UTImgProcess.vcxproj">
+      <Project>{a614506f-c4ee-4b80-a669-d004511193e5}</Project>
+      <Name>UTImgProcess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <Content Include="UTScannerApp\Debug\Baby.png" />
+    <Content Include="UTScannerApp\Debug\Female.png" />
+    <Content Include="UTScannerApp\Debug\icon.ico" />
+    <Content Include="UTScannerApp\Debug\Input\Patient1\Patient1.png" />
+    <Content Include="UTScannerApp\Debug\Input\Patient1\Patient1.xml" />
+    <Content Include="UTScannerApp\Debug\Input\Patient2\Patient2.png" />
+    <Content Include="UTScannerApp\Debug\Input\Patient2\Patient2.xml" />
+    <Content Include="UTScannerApp\Debug\Input\Patient3\Patient3.png" />
+    <Content Include="UTScannerApp\Debug\Input\Patient3\Patient3.xml" />
+    <Content Include="UTScannerApp\Debug\Left.png" />
+    <Content Include="UTScannerApp\Debug\Male.png" />
+    <Content Include="UTScannerApp\Debug\msvcm90.dll" />
+    <Content Include="UTScannerApp\Debug\msvcp90.dll" />
+    <Content Include="UTScannerApp\Debug\msvcr90.dll" />
+    <Content Include="UTScannerApp\Debug\opencv_world412d.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UTScannerApp\.vs\UTScannerApp\v16\ipch\AutoPCH\e84d5ec687953f54\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
