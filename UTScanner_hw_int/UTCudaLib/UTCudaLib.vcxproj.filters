@@ -36,6 +36,12 @@
     <ClInclude Include="mat_operations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cudaHeader.cuh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testheader.cuh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UTCudaLib.cpp">
@@ -63,6 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="function.cu">
+      <Filter>Source Files</Filter>
+    </CudaCompile>
+    <CudaCompile Include="test.cu">
       <Filter>Source Files</Filter>
     </CudaCompile>
   </ItemGroup>

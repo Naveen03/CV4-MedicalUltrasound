@@ -121,14 +121,14 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\navee\Documents\projects\USI_processing\UTScannerApp\cart_system\UTScannerApp_0.0.13b\UTScannerApp_0.0.13\UTScannerApp_0.0.13\cyprus\header;C:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opencv_world412.lib;legacy_stdio_definitions.lib;setupapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\opencv\build\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opencv_world412.lib;legacy_stdio_definitions.lib;cyapi.lib;setupapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\opencv\build\x64\vc15\lib;C:\Users\navee\Documents\projects\USI_processing\UTScannerApp\cart_system\UTScannerApp_0.0.13b\UTScannerApp_0.0.13\UTScannerApp_0.0.13\cyprus\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <CudaCompile>
-      <Include>C:\opencv\build\include;%(Include)</Include>
+      <Include>C:\opencv\build\include;C:\Users\navee\Documents\projects\USI_processing\UTScannerApp\cart_system\UTScannerApp_0.0.13b\UTScannerApp_0.0.13\UTScannerApp_0.0.13\cyprus\header\;%(Include)</Include>
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
   </ItemDefinitionGroup>
@@ -139,6 +139,8 @@
     <ClInclude Include="mat_operations.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="cudaHeader.cuh" />
+    <ClInclude Include="testheader.cuh" />
     <ClInclude Include="UTCudaLib.h" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="function.cu" />
+    <CudaCompile Include="test.cu" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

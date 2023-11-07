@@ -9,6 +9,10 @@ cv::Mat converttoMat(float* imgArray, int rows, int cols);
 
 cv::Mat converttoMat(float** imgArray, int rows, int cols);
 
+cv::Mat converttoMat(double** imgArray, int rows, int cols);
+
+double** convertto2darray(float* imgArray, int rows, int cols);
+
 cv::Mat logTransform(const cv::Mat& inMat);
 
 cv::Mat dynamicRangeAdjust(const cv::Mat& inMat, float delta);

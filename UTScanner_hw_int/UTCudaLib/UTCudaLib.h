@@ -29,27 +29,32 @@
 #include "host_func1.h"
 #include "beamforming_func1.h"
 #include "device_func1.h"
+#include "cudaHeader.cuh"
+#include "testheader.cuh"
 
 
-//class testCLass {
-//public:
-//	int a, b;
-//public: cv::Mat testFun();
-//};
+//extern std::string imageComputeCudaWrap::cuMemInit();
+//extern void imageComputeCudaWrap::cuMemInitTest(char*, float*, float*, float*,
+//	float*, float*, float*, float*,
+//	float*, float*, float*, float*);
 
 using namespace System;
 
 namespace UTCudaLib {
 	public ref class clsCuda
 	{
-		// TODO: Add your methods for this class here.
+	private:
+		static int probe_type;
+		//static std::ofstream mFile;
+		static double* bModeConfig;
+		
+		static cudaBackEnd* testObj;
+
 	public:
-		clsCuda() {}
-		//static void invokGPU(float* t, float* v, int tno);
-		static cli::array<double, 2>^ invokGPU();
-		int Test(int a, int b)
-		{
-			return 7;
+		clsCuda() {
 		}
+		//static void invokGPU(float* t, float* v, int tno);
+		static void selectProbe(int);
+		static cli::array<double, 2>^ invokGPU();
 	};
 }

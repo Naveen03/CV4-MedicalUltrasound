@@ -33,6 +33,36 @@ cv::Mat converttoMat(float** imgArray, int rows, int cols) {
     return outMat;
 }
 
+cv::Mat converttoMat(double** imgArray, int rows, int cols) {
+
+    // Converting the B-mode image into OpenCV Mat
+    cv::Mat outMat = cv::Mat::zeros(rows, cols, CV_64FC1);
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            outMat.at<double>(i, j) = imgArray[i][j];
+        }
+
+    }
+
+    return outMat;
+}
+
+double** convertto2darray(float* imgArray, int rows, int cols) {
+
+    double** outArray = new double* [cols];
+    for (int i = 0; i < cols; i++) {
+        outArray[i] = new double[rows];
+    }
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            outArray[i][j] = (double)imgArray[i * cols + j];
+        }
+    }
+
+    return outArray;
+}
+
 cv::Mat logTransform(const cv::Mat& inMat) {
     // Performing the log transformation to the image to make it enhanced
     // Formula applied is: "output=c*log(1+input)"
@@ -60,16 +90,16 @@ cv::Mat dynamicRangeAdjust(const cv::Mat& inMat, float delta) {
 
     cv::minMaxIdx(inMat, &minP, &maxP);
     // adjusting if not positive matrix
-    
+
     if (minP < 0) {
         outMat = inMat + abs(minP);
     }
-    else{
+    else {
         outMat = inMat;
     }
     cv::minMaxIdx(outMat, &minP, &maxP);
     outMat = outMat - maxP;
-    outMat = 127*((outMat + delta) / delta);
+    outMat = 127 * ((outMat + delta) / delta);
 
     return outMat;
 }
@@ -80,7 +110,7 @@ cv::Mat displayRangeAdjust(const cv::Mat& inMat, bool negtoZero) {
 
     cv::minMaxIdx(inMat, &minP, &maxP);
     if (negtoZero) {
-        inMat.convertTo(outMat, CV_8UC1, 255.0 / maxP ); // convert to 0->255 range avoiding neg pixels
+        inMat.convertTo(outMat, CV_8UC1, 255.0 / maxP); // convert to 0->255 range avoiding neg pixels
     }
     else {
         outMat = inMat + abs(minP); // to avoid any negative pixels

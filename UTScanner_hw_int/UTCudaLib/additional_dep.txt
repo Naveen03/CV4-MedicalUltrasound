@@ -1,0 +1,1 @@
+C:\Program Files (x86)\Cypress\EZ-USB FX3 SDK\1.3\library\cpp\lib\x64\cyapi.lib;
