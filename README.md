@@ -13,4 +13,4 @@ An Image processing project that deals with Ultrasound image formation and its p
 
   Written till log compression in CUDA 
 
-  
+
