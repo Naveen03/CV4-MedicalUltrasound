@@ -10,3 +10,7 @@ An Image processing project that deals with Ultrasound image formation and its p
  	Other adjustments like, gain, depth, etc.
 	Interface to C# Front end
  	Interface to CUDA back end
+
+  Written till log compression in CUDA 
+
+  
