@@ -111,50 +111,18 @@ __global__ void Tx_cen_pos(float* cen_pos, int N_elements, int N_active, float p
 // receive_delay calculation
 __global__ void receive_delay(float* probe_ge_x, float* x_axis1, float* z_axis1, int channels, int Nx, int Nz, float del_convert, float* rx_delay)
 {
-	unsigned int x = blockDim.x * blockIdx.x + threadIdx.x;
 
-	if (x < Nx * Nz * channels)
-	{
-		int i = x / Nz;
-		int ii = i % Nx;
-		int j = x % Nz;
-		int nrx = x / (Nx * Nz);
-		rx_delay[i * Nz + j] = (sqrt((probe_ge_x[nrx] - x_axis1[ii]) * (probe_ge_x[nrx] - x_axis1[ii]) + ((z_axis1[j]) * (z_axis1[j])))) * del_convert;
-		// 1867 - 210 = 1657
-		//rx_delay[i * Nx + j] = sqrt(rc * rc + (rc + z_axis[ii]) * (rc + z_axis[ii]) - 2 * rc * (rc + z_axis[ii]) * cos(theta[nrx] - theta1[j])) * del_convert;
-	}
 }
 
 //  transmit_delay calculation
 __global__ void transmit_delay(float* x_axis1, float* z_axis1, float* k1, float zd, int Nx, int Nz, float del_convert, int num_frames, float* tx_delay)
 {
-	int x = blockDim.x * blockIdx.x + threadIdx.x;
-	int i = x / Nz;
-	int ii = i % Nx;
-	int j = x % Nz;
-	int f = x / (Nx * Nz);
 
-	if (x < Nx * Nz * num_frames)
-	{
-		tx_delay[i * Nz + j] = (sqrt(((k1[f] - x_axis1[ii]) * (k1[f] - x_axis1[ii])) + ((zd + z_axis1[j]) * (zd + z_axis1[j])))) * del_convert;
-		// 1875-210 = 1665
-		//tx_delay[i * Nx + j] = (zd + sqrt(rc * rc + (rc + z_axis[ii]) * (rc + z_axis[ii]) - 2 * rc * (rc + z_axis[ii]) * cos(theta_tx[f] - theta1[j]))) * del_convert;
-		//first 256*1024 for frame 1, next 256*1024 for frame 2........
-	}
 }
 
 __global__ void beamformingLR3(float* beamformed_data1, float* tx_delay, float* rx_delay, float* data, float* rx_apod, int samples, int pixels, int f, int num_frames, int channels)
 {
-	unsigned int x = blockDim.x * blockIdx.x + threadIdx.x;
-	int nrx = x / pixels;   // nrx - nth A-line
-	int pix = x & (pixels - 1); // x% pixels;     // pixel location
 
-	int pixel_pos = round((float)tx_delay[f * pixels + pix] + (float)rx_delay[x]);   // delay value estimation from tx and rx delay values
-
-	if (pixel_pos < samples)
-	{
-		beamformed_data1[pix] += rx_apod[x] * data[(nrx * samples + pixel_pos - 1)];   // Extract data based on the delay values and multiplying with apodization value
-	}
 }
 
 __global__ void isnan_test_array(float* data, int size)
@@ -178,33 +146,7 @@ __global__ void isnan_test_array(float* data, int size)
 
 __global__ void BPfilter1SharedMem(float* in, float* filt_coeff, int pixels, float* y1) {
 
-	const int TILE_SIZE = 4;
-	int MASK_WIDTH = 364;
 
-	int x = blockIdx.x * blockDim.x + threadIdx.x;
-	__shared__ float N_s[TILE_SIZE];
-	N_s[threadIdx.x] = in[x];
-	__syncthreads();
-
-	int PtileStartPt = blockIdx.x * blockDim.x;
-	int NtileStartPt = (blockIdx.x + 1) * blockDim.x;
-	int n_start_pt = x - (MASK_WIDTH / 2);
-
-	float temp = 0;
-
-	for (int j = 0; j < MASK_WIDTH; j++) {
-		int N_index = n_start_pt + j;
-
-		if (N_index >= 0 && N_index < pixels) {
-			if ((N_index >= PtileStartPt) && (N_index < NtileStartPt)) {
-				temp += N_s[threadIdx.x + j - (MASK_WIDTH / 2)] * filt_coeff[j];
-			}
-			else {
-				temp += in[N_index] * filt_coeff[j];
-			}
-		}
-	}
-	y1[x] = temp;
 }
 
 __global__ void reshape_columnwise(int col, int row, float* beamformed_data_reshaped, float* d_bfHR)
@@ -228,14 +170,7 @@ __global__ void receive_delay(float* theta, float* theta1, float rc, float* z_ax
 {
 	int x = blockDim.x * blockIdx.x + threadIdx.x;
 
-	if (x < Nz * Nx * channels)
-	{
-		int i = x / Nz;
-		int ii = i % Nx;
-		int j = x % Nz;
-		int nrx = x / (Nx * Nz);
-		rx_delay[i * Nz + j] = sqrt(rc * rc + (rc + z_axis[j]) * (rc + z_axis[j]) - 2 * rc * (rc + z_axis[j]) * cos(theta[nrx] - theta1[ii])) * del_convert;
-	}
+
 }
 
 __global__ void theta1(float* theta_active, float* theta, int frames, int N_active, int skip_frames)
@@ -259,10 +194,7 @@ __global__ void transmit_delay(float* theta1, float* z_axis, float rc, float* th
 	int f = x / (Nx * Nz);
 
 
-	if (x < Nx * Nz * columns)
-	{
-		tx_delay[i * Nz + j] = (zd + sqrt(rc * rc + (rc + z_axis[j]) * (rc + z_axis[j]) - 2 * rc * (rc + z_axis[j]) * cos(theta_tx[f] - theta1[i % Nx]))) * del_convert;
-	}
+
 }
 
 __global__ void add_ele(float* data, int pixels, float* out_data)
